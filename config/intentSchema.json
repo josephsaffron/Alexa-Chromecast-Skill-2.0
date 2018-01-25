@@ -1,49 +1,127 @@
 {
-  "intents": [
+  "languageModel": {
+    "types": [
+      {
+        "name": "YOUTUBE_VIDEOS",
+        "values": [
+          {
+            "id": null,
+            "name": {
+              "value": "Let it Go",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "Made for this",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "You''re welcome",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "I See the Light",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "airport diaries",
+              "synonyms": []
+            }
+          },
+          {
+            "id": null,
+            "name": {
+              "value": "We know the Way",
+              "synonyms": []
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": [
+          "Help"
+        ]
+      },
+      {
+        "name": "AMAZON.PauseIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.ResumeIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "PlayYoutubeVideo",
+        "samples": [
+          "play {video}",
+          "play {video} on youtube",
+          "play {video} from youtube",
+          "play the {video}"
+        ],
+        "slots": [
+          {
+            "name": "video",
+            "type": "YOUTUBE_VIDEOS",
+            "samples": [
+              "{video}"
+            ]
+          }
+        ]
+      }
+    ],
+    "invocationName": "chromecast"
+  },
+  "prompts": [
     {
-      "intent": "PlayYoutubeVideo",
-      "slots": [
+      "id": "Elicit.Intent-PlayYoutubeVideo.IntentSlot-video",
+      "variations": [
         {
-          "name": "video",
-          "type": "YOUTUBE_VIDEOS"
+          "type": "PlainText",
+          "value": "What would you like to play?"
         }
       ]
-    },
-    {
-      "intent": "PlayTrailer",
-      "slots": [
-        {
-          "name": "movie",
-          "type": "MOVIE"
-        }
-      ]
-    },
-    {
-      "intent": "PowerOff"
-    },
-    {
-      "intent": "SetVolume",
-      "slots": [
-        {
-          "name": "volume",
-          "type": "AMAZON.NUMBER"
-        }
-      ]
-    },
-    {
-      "intent": "AMAZON.CancelIntent"
-    },
-    {
-      "intent": "AMAZON.PauseIntent"
-    },
-    {
-      "intent": "AMAZON.ResumeIntent"
-    },
-    {
-      "intent": "AMAZON.StopIntent"
-    },
-    {
-      "intent": "AMAZON.HelpIntent"
     }
-  ]
+  ],
+  "dialog": {
+    "intents": [
+      {
+        "name": "PlayYoutubeVideo",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "video",
+            "type": "YOUTUBE_VIDEOS",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-PlayYoutubeVideo.IntentSlot-video"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
