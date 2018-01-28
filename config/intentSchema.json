@@ -89,6 +89,18 @@
             ]
           }
         ]
+      },
+      {
+        "name": "SetVolume",
+        "samples": [
+          "set volume to {volume}"
+        ],
+        "slots": [
+          {
+            "name": "volume",
+            "type": "AMAZON.NUMBER"
+          }
+        ]
       }
     ],
     "invocationName": "chromecast"
